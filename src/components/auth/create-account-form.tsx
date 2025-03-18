@@ -1,6 +1,6 @@
-import { Button } from "../ui/button";
-import { Input } from "../ui/input/inpur-text";
-import { Label } from "../ui/input/label";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input/inpur-text";
+import { Label } from "@/components/ui/input/label";
 
 export default function CreateAccountForm() {
   return (

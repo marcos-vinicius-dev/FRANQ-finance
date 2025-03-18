@@ -1,6 +1,6 @@
-import { RiPieChart2Fill } from "@remixicon/react";
-import { Button } from "../../components/ui/button";
-import LoginForm from "../../components/auth/login-form";
+import { Button } from "@/components/ui/button";
+import LoginForm from "@/components/auth/login-form";
+import { NavLink } from "react-router";
 
 export default function LoginPage() {
   return (

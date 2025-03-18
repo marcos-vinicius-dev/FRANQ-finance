@@ -1,6 +1,6 @@
-import { RiPieChart2Fill } from "@remixicon/react";
-import { Button } from "../../components/ui/button";
-import CreateAccountForm from "../../components/auth/create-account-form";
+import { Button } from "@/components/ui/button";
+import CreateAccountForm from "@/components/auth/create-account-form";
+import { NavLink } from "react-router";
 
 export default function CreateAccountPage() {
   return (

@@ -4,12 +4,7 @@ import React from "react";
 import { RiEyeFill, RiEyeOffFill, RiSearchLine } from "@remixicon/react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-import {
-  cx,
-  focusInput,
-  focusRing,
-  hasErrorInput,
-} from "../../../utils/libs/tremor";
+import { cx, focusInput, focusRing, hasErrorInput } from "@/utils/libs/tremor";
 
 const inputStyles = tv({
   base: [
