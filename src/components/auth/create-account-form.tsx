@@ -25,7 +25,7 @@ export default function CreateAccountForm() {
           placeholder="Digite novamente sua senha"
         />
       </div>
-      <Button className="mt-4 w-full">Já tem uma conta? Faça login aqui</Button>
+      <Button className="mt-4 w-full">Cadastrar</Button>
     </form>
   );
 }

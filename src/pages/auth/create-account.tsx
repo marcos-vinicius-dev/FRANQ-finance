@@ -19,8 +19,8 @@ export default function CreateAccountPage() {
         </p>
         <div className="mt-6">
           <CreateAccountForm />
-          <Button asChild className="mt-4 w-full" variant="light">
-            <a href="/cadastro">Tenho uma conta! .</a>
+          <Button className="mt-4 w-full">
+            Já tem uma conta? Faça login aqui
           </Button>
         </div>
       </div>
