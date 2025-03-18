@@ -1,7 +1,5 @@
 import { RiPieChart2Fill } from "@remixicon/react";
 import { Button } from "../../components/ui/button";
-import { Label } from "../../components/ui/input/label";
-import { Input } from "../../components/ui/input/inpur-text";
 import CreateAccountForm from "../../components/auth/create-account-form";
 
 export default function CreateAccountPage() {
