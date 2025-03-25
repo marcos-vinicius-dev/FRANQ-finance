@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Desafio Técnico - Pessoa Desenvolvedora Front End
 
-Currently, two official plugins are available:
+Este projeto foi desenvolvido como parte do desafio técnico para a posição de Pessoa Desenvolvedora Front End. O objetivo deste desafio é avaliar as habilidades em desenvolvimento front-end, incluindo a integração com APIs, autenticação de usuários, visualização de dados e boas práticas de desenvolvimento.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+-   **Tela de Login e Cadastro**: O usuário pode se autenticar ou se cadastrar. A persistência do usuário é feita via `localStorage`.
+    
+-   **Autenticação**: A aplicação verifica a validade da sessão e, caso inativa, o usuário é deslogado e redirecionado à tela de login.
+    
+-   **Visualização de Cotações**: O usuário pode visualizar as cotações dos 10 itens financeiros.
+    
+-   **Indicação de Variação**: Se a variação diária for positiva, o valor será mostrado em verde; se negativa, em vermelho.
+    
+-   **Gráfico de Evolução**: O usuário pode selecionar um item e observar a evolução dos preços desde o início da aplicação.
+    
+-   **Responsividade**: A aplicação é responsiva e funciona em diferentes tamanhos de tela.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologias Utilizadas
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **React**: Biblioteca para construção de interfaces de usuário.
+- **Vite**: Ferramenta de build otimizada para desenvolvimento.
+- **TypeScript**: Adiciona tipagem estática e outros recursos que não estão presentes no JavaScript.
+- **Tailwind CSS**: Framework CSS utilitário para estilização rápida e responsiva.
+- **Tremor.so**: Biblioteca de componentes acessíveis.
+- **Recharts**: Biblioteca para criação de gráficos e visualizações de dados.
+- **Axios**: Cliente HTTP para fazer requisições para APIs.
+- **Biome**: Ferramenta para formatação e linting do código.
+
+    
+
+## Instalação
+
+Clone o repositório e instale as dependências:
+
+```bash
+git clone https://github.com/marcos-vinicius-dev/FRANQ-finance.git
+cd finance-franq
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Configuração de Ambiente
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Requisitos
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+-   **Node.js**: Versão 16 ou superior.
+    
+-   **npm**: Versão 8 ou superior.
+    
+
+### Para rodar o projeto
+
+1.  Clone o repositório.
+    
+2.  Execute `npm install` para instalar as dependências.
+    
+3.  Execute `npm run dev` para iniciar o servidor de desenvolvimento.
+
+
+
+## Scripts
+
+Abaixo estão os comandos disponíveis para executar e trabalhar no projeto:
+
+-   **`npm run dev`**: Inicia o servidor de desenvolvimento com Vite.
+    
+-   **`npm run build`**: Compila o projeto com TypeScript e cria os arquivos para produção com Vite.
+    
+-   **`npm run preview`**: Pré-visualiza a aplicação após a build.
+    
+-   **`npm run format`**: Formata o código com Biome.
+    
+-   **`npm run lint`**: Verifica o código com Biome para garantir a qualidade do código.
+    
+-   **`npm run check`**: Realiza uma verificação no código para garantir que ele esteja em conformidade com as regras definidas.
+-   **`npm run ci`**: Executa verificações específicas para integração contínua.
