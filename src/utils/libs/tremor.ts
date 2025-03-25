@@ -107,7 +107,7 @@ export const constructCategoryColors = (
 ): Map<string, AvailableChartColorsKeys> => {
   const categoryColors = new Map<string, AvailableChartColorsKeys>();
   categories.forEach((category, index) => {
-    categoryColors.set(category, colors[index % colors.length]);
+    categoryColors.set(category, colors[index % colors.length] || "blue");
   });
   return categoryColors;
 };
