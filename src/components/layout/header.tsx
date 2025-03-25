@@ -9,7 +9,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <div className="shadow-s sticky top-0 z-20 bg-white dark:bg-gray-950">
+    <header className="shadow-s sticky top-0 z-20 bg-white dark:bg-gray-950">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 pt-3">
         <div className="flex items-center gap-4">
           <NavLink to="/">
@@ -33,12 +33,26 @@ export default function Header() {
           <TabNavigationLink
             className="inline-flex gap-2"
             asChild
-            active={location.pathname === "/cotacoes"}
+            active={location.pathname.startsWith("/acoes")}
           >
-            <NavLink to="/cotacoes">Cotações</NavLink>
+            <NavLink to="/acoes/indices">Ações</NavLink>
+          </TabNavigationLink>
+          <TabNavigationLink
+            className="inline-flex gap-2"
+            asChild
+            active={location.pathname === "/moedas"}
+          >
+            <NavLink to="/moedas">Moedas</NavLink>
+          </TabNavigationLink>
+          <TabNavigationLink
+            className="inline-flex gap-2"
+            asChild
+            active={location.pathname === "/bitcoin"}
+          >
+            <NavLink to="/bitcoin">Bitcoin </NavLink>
           </TabNavigationLink>
         </div>
       </TabNavigation>
-    </div>
+    </header>
   );
 }
