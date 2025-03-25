@@ -6,20 +6,41 @@ import * as NavigationMenuPrimitives from "@radix-ui/react-navigation-menu";
 import { cx, focusRing } from "@/utils/libs/tremor";
 
 function getSubtree(
-  options: { asChild: boolean | undefined; children: React.ReactNode },
+  options: {
+    asChild?: boolean;
+    children: React.ReactNode;
+  },
   content: React.ReactNode | ((children: React.ReactNode) => React.ReactNode),
-) {
-  const { asChild, children } = options;
-  if (!asChild)
-    return typeof content === "function" ? content(children) : content;
+): React.ReactNode {
+  const { asChild = false, children } = options;
 
-  const firstChild = React.Children.only(children) as React.ReactElement;
-  return React.cloneElement(firstChild, {
+  if (!asChild) {
+    return typeof content === "function" ? content(children) : content;
+  }
+
+  // Validate and type the child element
+  const childArray = React.Children.toArray(children);
+  if (childArray.length !== 1) {
+    console.warn("asChild requires exactly one child element");
+    return typeof content === "function" ? content(children) : content;
+  }
+
+  const firstChild = childArray[0];
+  if (!React.isValidElement(firstChild)) {
+    return typeof content === "function" ? content(children) : content;
+  }
+
+  // Type the props properly
+  const existingProps = firstChild.props as Record<string, unknown>;
+  const newProps = {
+    ...existingProps,
     children:
       typeof content === "function"
-        ? content(firstChild.props.children)
+        ? content(existingProps.children as React.ReactNode)
         : content,
-  });
+  };
+
+  return React.cloneElement(firstChild, newProps);
 }
 
 const TabNavigation = React.forwardRef<
