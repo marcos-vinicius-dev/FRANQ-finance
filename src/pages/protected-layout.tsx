@@ -1,7 +1,13 @@
 import Header from "@/components/layout/header";
-import { Outlet } from "react-router";
+import { useIsAuthenticated } from "@/hooks/useIsAuthenticated";
+import { Navigate, Outlet } from "react-router";
 
 export default function ProtectedLayout() {
+  const { isAuthenticated } = useIsAuthenticated();
+  if (!isAuthenticated) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <Header />
