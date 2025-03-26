@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Skeleton from "@/components/ui/skeleton";
 import getFinance from "@/gateway/finance";
-import { formatDate } from "@/utils/formatters/date";
 import { formatQuotesForDisplay } from "@/utils/quotes/formatQuotesForDisplay";
 import { useEffect, useState } from "react";
 import type { IQuotesState } from "@/entities/quote";
-import CurrencyCard from "@/components/finance/currency-card";
-import BitcoinCard from "@/components/finance/bitcoin-card";
+import CurrencyCard from "@/components/finance/currency/currency-card";
+import BitcoinCard from "@/components/finance/bitcoin/bitcoin-card";
 import IndexesCard from "@/components/finance/stock/indexes-card";
 import SectionHeader from "@/components/layout/section-header";
 import StockCard from "@/components/finance/stock/stock-card";
@@ -51,7 +50,6 @@ export default function DashboardPage() {
             category: "bitcoin",
           }),
           taxes: quotesData.taxes[0] || DEFAULT_TAXES_STATE,
-          lastUpdated: new Date().toISOString(),
         });
         setError(null);
       } catch (err) {
@@ -67,27 +65,24 @@ export default function DashboardPage() {
 
   if (error) {
     return (
-      <div className="p-4 text-center text-red-500">
+      <div className="p-4 text-center flex flex-col gap-4 text-gray-400">
         {error}
-        <Button onClick={() => window.location.reload()} className="mt-4">
-          Tentar novamente
-        </Button>
+        <div>
+          <Button onClick={() => window.location.reload()} className="mt-4">
+            Tentar novamente
+          </Button>
+        </div>
       </div>
     );
   }
 
   return (
     <main className="p-4">
-      <header className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50">
           Visão Geral
         </h1>
-        {quotes.lastUpdated && (
-          <span className="text-sm text-gray-500">
-            Atualizado em: {formatDate(quotes.lastUpdated)}
-          </span>
-        )}
-      </header>
+      </div>
 
       <section className="flex flex-col gap-8">
         <IndexesCard taxes={quotes.taxes} loading={loading} />
