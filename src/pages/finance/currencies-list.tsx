@@ -1,57 +1,10 @@
-import VariationBadge from "@/components/finance/variation-badge";
+import { CurrencyTable } from "@/components/finance/currency/currency-table";
 import SkeletonTable from "@/components/layout/skeleton-table";
-
-import {
-  TableHead,
-  TableRow,
-  TableHeaderCell,
-  TableBody,
-  TableCell,
-  Table,
-} from "@/components/ui/table/table";
 import type { ICurrencyQuote } from "@/entities/currency";
 import getFinance from "@/gateway/finance";
-import { formatCurrency } from "@/utils/formatters/currency";
 import { formatQuotesForDisplay } from "@/utils/quotes/formatQuotesForDisplay";
 
 import { useState, useEffect } from "react";
-
-export function CurrencyTable({ data }: { data: ICurrencyQuote[] }) {
-  return (
-    <Table className="mt-6">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Código</TableHeaderCell>
-          <TableHeaderCell>Nome</TableHeaderCell>
-          <TableHeaderCell>Compra</TableHeaderCell>
-          <TableHeaderCell>Venda</TableHeaderCell>
-          <TableHeaderCell>Variação</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data.map((currency) => (
-          <TableRow key={`${currency.source}-${currency.code}`}>
-            <TableCell>{currency.code}</TableCell>
-            <TableCell>{currency.name}</TableCell>
-            <TableCell>
-              {currency.sell ? formatCurrency(currency.sell) : "N/A"}
-            </TableCell>
-            <TableCell>
-              {currency.sell ? formatCurrency(currency.sell) : "N/A"}
-            </TableCell>
-            <TableCell>
-              {currency.variation ? (
-                <VariationBadge value={currency.variation} />
-              ) : (
-                "N/A"
-              )}
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-}
 
 export default function CurrenciesListPage() {
   const [quotes, setQuotes] = useState<ICurrencyQuote[] | null>(null);

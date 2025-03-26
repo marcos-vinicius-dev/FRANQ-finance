@@ -1,16 +1,16 @@
 import { formatCurrency } from "@/utils/formatters/currency";
-import { Card } from "../ui/card";
-import VariationBadge from "./variation-badge";
+import { Card } from "../../ui/card";
+import VariationBadge from "../variation-badge";
+import type { ICurrencyQuote } from "@/entities/currency";
 import { NavLink } from "react-router";
-import type { IBitcoinQuote } from "@/entities/bitcoin";
 
-export default function BitcoinCard({
+export default function CurrencyCard({
   to,
-  bitcoin,
+  currency,
   outline,
 }: {
   to: string;
-  bitcoin: IBitcoinQuote;
+  currency: ICurrencyQuote;
   outline?: boolean;
 }) {
   return (
@@ -18,27 +18,24 @@ export default function BitcoinCard({
       <Card outline={outline} className="flex flex-col gap-2">
         <div className="flex justify-between">
           <h3 className="font-bold text-gray-900 dark:text-gray-50 text-lg">
-            {bitcoin.name}
+            {currency.name}
+            <span className="text-sm font-light text-gray-400 ml-2">
+              {currency.code}
+            </span>
           </h3>
-          <VariationBadge value={bitcoin?.variation} />
+          <VariationBadge value={currency?.variation} />
         </div>
         <span className="flex flex-wrap gap-6">
-          {bitcoin?.buy && (
-            <QuoteCardItem
+          {currency?.buy && (
+            <CurrencyCardItem
               title="Compra"
-              value={formatCurrency(bitcoin?.buy)}
+              value={formatCurrency(currency?.buy)}
             />
           )}
-          {bitcoin?.sell && (
-            <QuoteCardItem
+          {currency?.sell && (
+            <CurrencyCardItem
               title="Venda"
-              value={formatCurrency(bitcoin?.sell)}
-            />
-          )}
-          {bitcoin?.last && (
-            <QuoteCardItem
-              title="Última cotação"
-              value={formatCurrency(bitcoin?.last)}
+              value={formatCurrency(currency?.sell)}
             />
           )}
         </span>
@@ -47,7 +44,7 @@ export default function BitcoinCard({
   );
 }
 
-function QuoteCardItem({ title, value }: { title: string; value: string }) {
+function CurrencyCardItem({ title, value }: { title: string; value: string }) {
   return (
     <span className="flex flex-col">
       <p className=" text-gray-900 dark:text-white">{title}</p>
