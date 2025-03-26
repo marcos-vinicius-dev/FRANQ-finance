@@ -36,7 +36,7 @@ export default function IndexesCard({
           </span>
         )}
       </h2>
-      <Card className="grid grid-cols-3 gap-4 !bg-transparent !shadow-none">
+      <Card className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 !bg-transparent !shadow-none">
         <TaxCard
           to="/taxes/selic"
           title="SELIC"

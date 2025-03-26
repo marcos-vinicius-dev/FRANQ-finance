@@ -8,7 +8,6 @@ export interface IQuotesState {
   stocks: IStockIndex[];
   bitcoin: IBitcoinQuote[];
   taxes: ITax;
-  lastUpdated?: string;
 }
 
 export type QuoteCategory = "stocks" | "bitcoin" | "currency" | "taxes";
